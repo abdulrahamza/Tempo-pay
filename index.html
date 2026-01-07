@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempo Batch Payment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    
+    <main class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <h1>Tempo<span class="highlight">Pay</span></h1>
+                <p>Non-custodial batch payments</p>
+            </div>
+            <button id="connectBtn" class="btn-secondary">
+                Connect Wallet
+            </button>
+        </header>
+
+        <!-- Configuration Card -->
+        <section class="card glass">
+            <h2>1. Configuration</h2>
+            <div class="input-group">
+                <label for="tokenAddress">Token Address (TIP-20)</label>
+                <input type="text" id="tokenAddress" placeholder="0x..." />
+            </div>
+        </section>
+
+        <!-- Recipients Card -->
+        <section class="card glass">
+            <h2>2. Recipients</h2>
+            <p class="subtitle">Enter one per line: <code>Address, Amount</code></p>
+            <div class="input-group">
+                <textarea id="csvInput" rows="8" placeholder="0x123..., 100&#10;0x456..., 50"></textarea>
+            </div>
+            <div class="total-summary" id="summary">
+                Tokens to Send: <span id="totalTokens">0</span>
+            </div>
+        </section>
+
+        <!-- Actions Card -->
+        <section class="card glass actions-card">
+            <h2>3. Execute</h2>
+            <div class="action-buttons">
+                <button id="approveBtn" class="btn-primary" disabled>
+                    <span class="icon">🔓</span> Approve Tokens
+                </button>
+                <button id="payBtn" class="btn-primary" disabled>
+                    <span class="icon">💸</span> Batch Pay
+                </button>
+            </div>
+            <div id="status" class="status-log">Ready to connect...</div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <!-- Ethers.js via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js" type="application/javascript"></script>
+    <script src="app.js"></script>
+</body>
+</html>
